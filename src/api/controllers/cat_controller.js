@@ -4,13 +4,13 @@ const getCat = (req, res) => {
   res.json(listAllCats());
 };
 
-const getCatById = (req, res) => {
-  const cat = findCatById(req.params.id);
+const getCatById =async (req, res) => {
+   const cat = await findCatById(req.params.id);
   if (cat) {
-    res.json(cat);
-  } else {
-    res.sendStatus(404);
-  }
+      res.json(cat);
+    } else {
+      res.sendStatus(404);
+    }
 };
 
 const postCat = (req, res) => {
