@@ -1,5 +1,3 @@
-
-
 import express from 'express';
 import {
     getUser,
@@ -7,7 +5,7 @@ import {
     postUser,
     putUser,
     deleteUser,
-} from 'src/api/controllers/user-controller.js';
+} from '../controllers/user-controller.js';
 
 const userRouter = express.Router();
 userRouter.route('/').get(getUser).post(postUser);
