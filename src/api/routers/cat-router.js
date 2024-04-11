@@ -8,6 +8,7 @@ import {
   putCat,
   deleteCat,
 } from '../controllers/cat-controller.js';
+import { createThumbnail } from '../middleware/thumbnail.js';
 
 const catRouter = express.Router();
 
@@ -18,15 +19,11 @@ const storage = multer.diskStorage({
   filename: function (req, file, cb) {
     const suffix = `${Date.now()}-${Math.round(Math.random() * 1E9)}`;
     const prefix = `${file.originalname.split('.')[0].toLowerCase()}-${file.fieldname}`
-    let extension = 'jpeg';
+    let extension = 'jpg';
 
     console.log("test", file)
     if (file.mimetype == 'image/png') {
       extension = 'png';
-    // } else if (file.mimetype == 'image/png') {
-    //   extension = '.png';
-    // } else if (file.mimetype == 'image/gif') {
-    //   extension = '.gif';
     }
 
     console.log("file in storage", file)
@@ -41,12 +38,18 @@ const upload = multer({
   storage
 });
 
+catRouter.route('/')
+.get(getCat)
+.post(upload.single('file'),
+  createThumbnail,
+  postCat)
+  ;
 
-catRouter.route('/').get(getCat)
-.post(upload.single('file'),postCat);
 
-
-catRouter.route('/:id').get(getCatById).put(putCat).delete(deleteCat);
+catRouter.route('/:id')
+  .get(getCatById)
+  .put(putCat)
+  .delete(deleteCat);
 
 export default catRouter;
 
