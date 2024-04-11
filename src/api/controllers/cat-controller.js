@@ -1,3 +1,4 @@
+
 import {addCat, findCatById, listAllCats} from "../models/cat-model.js";
 
 const getCat = (req, res) => {
@@ -18,6 +19,7 @@ const postCat = (req, res) => {
   //console.log('req', req);
 
   const result = addCat(req.body, req.file );
+
   if (result.cat_id) {
     res.status(201);
     res.json({message: 'New cat added.', result});

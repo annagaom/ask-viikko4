@@ -7,6 +7,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/public', express.static('public'));
 app.use('/api/v1', api);
 
+
 app.get('/', (req, res) => {
     const cat = {
         cat_id: 1,
@@ -18,5 +19,11 @@ app.get('/', (req, res) => {
     };
     res.json(cat);
 });
+
+app.get('/api/v1/users', getUser);
+app.get('/api/v1/users/:id', getUserById);
+app.post('/api/v1/users', postUser);
+app.put('/api/v1/users/:id', putUser);
+app.delete('/api/v1/users/:id', deleteUser);
 
 export default app;
