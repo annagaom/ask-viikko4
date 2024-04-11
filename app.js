@@ -6,7 +6,7 @@ const port = 3000;
 app.use('/public', express.static('public'));
 
 app.get('/', (req, res) => {
-  res.send('Welcome to my REST API!');
+  res.send('Hello World!');
 });
 
 app.get('/api/v1/cat', (req, res) => {
