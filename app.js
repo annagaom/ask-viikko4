@@ -21,6 +21,6 @@ app.get('/api/v1/cat', (req, res) => {
   res.json(cat);
 });
 
-app.listen(port, hostname, () => {
+app.listen(port, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
