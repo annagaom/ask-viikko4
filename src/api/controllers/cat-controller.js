@@ -1,4 +1,4 @@
-import {addCat, findCatById, listAllCats} from "../models/cat_model.js";
+import {addCat, findCatById, listAllCats} from "src/api/models/cat-model.js";
 
 const getCat = (req, res) => {
   res.json(listAllCats());
@@ -14,14 +14,15 @@ const getCatById = (req, res) => {
 };
 
 const postCat = (req, res) => {
-  console.log("postCat", req.body);
+  console.log('postCat', req.body);
+  console.log('File', req.file);
 
-  const result = addCat(req.body, req.file );
+  const result = addCat(req.body, req.file);
   if (result.cat_id) {
-    res.status(201);
-    res.json({message: 'New cat added.', result});
+      res.status(201);
+      res.json({ message: 'New cat added.', result });
   } else {
-    res.sendStatus(400);
+      res.sendStatus(400);
   }
 };
 
