@@ -1,6 +1,5 @@
 import express from 'express';
-
-import catRouter from 'src/api/routes/router.js';
+import catRouter from './routers/cat-router.js';
 
 const router = express.Router();
 

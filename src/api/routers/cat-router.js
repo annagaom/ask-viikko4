@@ -7,7 +7,7 @@ import {
   postCat,
   putCat,
   deleteCat,
-} from '../controllers/cat_controller.js';
+} from '../controllers/cat-controller.js';
 
 const catRouter = express.Router();
 

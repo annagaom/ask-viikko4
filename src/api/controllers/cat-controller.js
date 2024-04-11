@@ -1,20 +1,25 @@
-import {addCat, findCatById, listAllCats} from "src/api/models/cat-model.js";
+
+import {addCat, findCatById, listAllCats} from "../models/cat-model.js";
 
 const getCat = (req, res) => {
   res.json(listAllCats());
 };
 
-const getCatById = (req, res) => {
-  const cat = findCatById(req.params.id);
+const getCatById =async (req, res) => {
+   const cat = await findCatById(req.params.id);
   if (cat) {
-    res.json(cat);
-  } else {
-    res.sendStatus(404);
-  }
+      res.json(cat);
+    } else {
+      res.sendStatus(404);
+    }
 };
 
 const postCat = (req, res) => {
-  const result = addCat(req.body);
+  console.log("postCat", req.body);
+  //console.log('req', req);
+
+  const result = addCat(req.body, req.file );
+
   if (result.cat_id) {
     res.status(201);
     res.json({message: 'New cat added.', result});
