@@ -1,7 +1,7 @@
 import { allUsers, findUserById, addUser } from '../models/user-model.js';
 
 const getUser = (req, res) => {
-    res.json(listAllUsers());
+    res.json(allUsers());
 };
 
 const getUserById = (req, res) => {
@@ -13,14 +13,18 @@ const getUserById = (req, res) => {
     }
 };
 
+
 const postUser = (req, res) => {
-    const result = addUser(req.body);
-    if (result.user_id) {
-        res.status(201);
-        res.json({ message: 'New user added.', result });
-    } else {
-        res.sendStatus(400);
-    }
+  const newUser = {
+    name: 'Niki',
+    username: 'nisku',
+    email: 'nisku@metropolia.fi',
+    role: 'admin',
+    password: 'password'
+  };
+
+  const result = addUser(newUser);
+  res.json({ message: 'New user added.', result });
 };
 
 const putUser = (req, res) => {
