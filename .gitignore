@@ -7,6 +7,10 @@
 .AppleDouble
 .LSOverride
 
+*.env
+uusi.env
+
+
 # Icon must end with two \r
 Icon
 
@@ -193,4 +197,11 @@ dist
 .history
 .ionide
 
+# ignore content of uploads folder
+uploads/*
+# except one (empty) file to have the folder in version control
+!uploads/.gitkeep
+
 # End of https://www.toptal.com/developers/gitignore/api/node,macos,visualstudiocode
+
+
