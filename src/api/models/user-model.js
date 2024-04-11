@@ -25,7 +25,7 @@ const userItems = [
   },
 ];
 
-const listAllUsers = () => {
+const allUsers = () => {
   return userItems;
 };
 
@@ -40,4 +40,4 @@ const addUser = (user) => {
   return { user_id: newId };
 };
 
-export { listAllUsers, findUserById, addUser };
+export { allUsers, findUserById, addUser };
