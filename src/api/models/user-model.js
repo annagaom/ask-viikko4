@@ -40,4 +40,17 @@ const addUser = (user) => {
   return { user_id: newId };
 };
 
-export { allUsers, findUserById, addUser };
+const getUserByUsername = async (username) => {
+    const sql = `SELECT *
+              FROM wsk_users
+              WHERE username = ?`;
+
+    const [rows] = await promisPool.execute(sql, [user.username]);
+    if (rows.length === 0) {
+        return false;
+    }
+    return rows[0];
+
+}
+
+export { allUsers, findUserById, addUser, getUserByUsername};
