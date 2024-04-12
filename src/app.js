@@ -1,12 +1,12 @@
-
-
+import { notFoundHandler, errorHandler } from './middlewares.js';
 import express from 'express';
 import api from './api/index.js';
 // const hostname = '127.0.0.1';
 const app = express();
 // const port = 3000;
 
-
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
