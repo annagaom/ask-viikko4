@@ -27,10 +27,16 @@ const postUser = (req, res) => {
   res.json({ message: 'New user added.', result });
 };
 
-const putUser = (req, res) => {
+const putUser = async(req, res) => {
+  if (
+    res.locals.user.id !== Number(req.params.id) &&
+    res.locals.user.role !== 'admin'
+) {
+  res.sendStatus(403);
+  return;
+}
   res.json({ message: 'User item updated.' });
-
-};
+}
 
 const deleteUser = (req, res) => {
   res.json({ message: 'User item deleted.' });

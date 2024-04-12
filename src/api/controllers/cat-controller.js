@@ -28,10 +28,16 @@ const postCat = (req, res) => {
   }
 };
 
-const putCat = (req, res) => {
   // not implemented in this example, this is future homework
-  res.sendStatus(200);
+const putCat = async (req, res) => {
+  result = await updateUser(req.body, req.params.id);
+  if(!result) {
+    res.sendStatus(404);
+    return;
+  }
+  res.json(result);
 };
+
 
 const deleteCat = (req, res) => {
   // not implemented in this example, this is future homework

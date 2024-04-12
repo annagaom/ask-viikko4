@@ -6,12 +6,13 @@ import {
     postCat,
     putCat,
     deleteCat,
-} from '../controllers/controller.js';
+} from '../controllers/cat-controller.js'
+import { authenticateToken } from '../../middlewares.js';
 
 const catRouter = express.Router();
 
 catRouter.route('/').get(getCat).post(postCat);
 
-catRouter.route('/:id').get(getCatById).put(putCat).delete(deleteCat);
+catRouter.route('/:id').get(getCatById).put(authenticateToken).delete(authenticateToken);
 
 export default catRouter;
