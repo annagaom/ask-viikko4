@@ -15,7 +15,7 @@ app.get('/api/v1/cat', (req, res) => {
     name: 'visku',
     birthdate: '2021-01-01',
     weight: 12,
-    owner: 2,
+    owner: "Anna",
     image: 'https://loremflickr.com/320/240/cat',
   };
   res.json(cat);
