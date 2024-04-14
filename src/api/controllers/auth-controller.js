@@ -24,31 +24,24 @@ const postLogin = async (req, res) => {
     role: user.role,
   };
 
+  // toinen vaihtoehto
+  // delete user.password;
+
   const token = jwt.sign(userWithNoPassword, process.env.JWT_SECRET, {
     expiresIn: '24h',
   });
+
   res.json({user: userWithNoPassword, token});
 };
 
-const postLogin2 = async (req, res) => {
-
-//toinen vaihtovaihto
-//delete user password from user object
-  const postLoginin = async
-  const token = jwt.sign(userWithNoPassword, process.env.JWT_SECRET, {
-    expiresIn: '24h',
-    });
-    res.json({user: userWithNoPassword, token});
-  };
-
-  // controller:
 const getMe = async (req, res) => {
   console.log('getMe', res.locals.user);
-  if ( res.locals.user) {
-    res.json({message: 'token ok', user:  res.locals.user});
+  if (res.locals.user) {
+    res.json({message: 'token ok', user: res.locals.user});
+
   } else {
     res.sendStatus(401);
   }
 };
 
-export {postLogin, postLogin2};
+export {postLogin, getMe};
