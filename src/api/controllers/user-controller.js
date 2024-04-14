@@ -57,6 +57,7 @@ const putUser = async (req, res) => {
   res.json(result);
 };
 
+
 const deleteUser = async (req, res) => {
   if (
     res.locals.user.user_id !== Number(req.params.id) &&

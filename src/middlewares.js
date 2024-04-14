@@ -1,4 +1,6 @@
 import sharp from 'sharp';
+import jwt from 'jsonwebtoken';
+import 'dotenv/config';
 
 const createThumbnail = async (req, res, next) => {
     if (!req.file) {
@@ -17,7 +19,6 @@ const createThumbnail = async (req, res, next) => {
         .then(() => next())
 
 };
-
 
 const notFoundHandler = (req, res, next) => {
   console.log = ('req', req);
@@ -40,3 +41,4 @@ const errorHandler = (err, req, res, next) => {
 
 
 export { createThumbnail, notFoundHandler, errorHandler};
+

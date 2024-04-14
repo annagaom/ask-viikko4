@@ -31,10 +31,12 @@ const putCat = async (req, res) => {
   const result = await modifyCat(req.body, req.params.id, res.locals.user);
   if (!result) {
     res.sendStatus(400);
+
     return;
   }
   res.json(result);
 };
+
 
 const deleteCat = (req, res) => {
   // not implemented in this example, this is future homework

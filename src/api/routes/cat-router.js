@@ -1,6 +1,7 @@
 
 import express from 'express';
 import {
+
   getCat,
   getCatById,
   postCat,
@@ -9,6 +10,7 @@ import {
 } from '../controllers/cat-controller.js';
 import multer from 'multer';
 import {authenticateToken, createThumbnail} from '../../middlewares.js';
+
 
 const catRouter = express.Router();
 

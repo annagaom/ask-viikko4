@@ -61,7 +61,7 @@ const modifyCat = async (cat, id, user) => {
     return false;
   }
   return {message: 'success'};
-};
+
 
 const removeCat = async (id, user) => {
   let sql = promisePool.format(
